@@ -3,12 +3,13 @@ import Stepper from '@/components/CustomerIntakeForm/Stepper'
 import useStepper from '@/stores/CustomerIntakeForm/useStepperStore'
 import { Bulp, HelpIcon, MessagesIcon } from '@/utils/Icons'
 import { useStoreHook } from '@/utils/useStoreHook'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { useAutoAnimate } from '@formkit/auto-animate/react'
 
 const CustomerIntakeFormPage = () => {
   const stepNumb = useStoreHook(useStepper, (state) => state.stepNumb)
   const setStepNumb = useStepper((state) => state.setStepNumb)
-
+  const [animateRef] = useAutoAnimate()
   return (
     <div className='flex  '>
       <div className='relative w-[5rem]   '>
@@ -60,12 +61,12 @@ const CustomerIntakeFormPage = () => {
           </div>
         </div>
       </div>
-      <div className='grid w-full grid-cols-12   gap-x-5 '>
+      <div ref={animateRef} className='grid w-full grid-cols-12   gap-x-5 '>
         <div className=' col-span-12 mt-10  pl-10  pr-5   lg:col-span-6  lg:pl-6 '>
           <Stepper />
         </div>
         {stepNumb && (
-          <div className=' relative ml-auto hidden w-full  lg:col-span-5 lg:block'>
+          <div className=' relative ml-auto hidden w-full  lg:col-span-6 lg:block'>
             <div className='fixed 2xl:right-0 '>
               <img
                 className='  mx-auto  h-full min-h-screen  w-full bg-gray-50  '

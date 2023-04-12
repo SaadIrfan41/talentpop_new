@@ -6,12 +6,14 @@ import Step2 from './Step2'
 import Step3 from './Step3'
 
 import { useStoreHook } from '@/utils/useStoreHook'
+import { useAutoAnimate } from '@formkit/auto-animate/react'
 
 const Stepper = () => {
   const stepNumb = useStoreHook(useStepper, (state) => state.stepNumb)
+  const [animateRef] = useAutoAnimate()
 
   return (
-    <div>
+    <div ref={animateRef}>
       {stepNumb === 1 ? (
         <Step1 />
       ) : stepNumb === 2 ? (
