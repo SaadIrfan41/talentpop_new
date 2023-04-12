@@ -1,4 +1,6 @@
+import { textFont } from '@/utils/fonts'
 import './globals.css'
+import 'flatpickr/dist/themes/material_green.css'
 
 export const metadata = {
   title: 'Create Next App',
@@ -11,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang='en' className={`${textFont.className} `}>
       <body>{children}</body>
     </html>
   )
