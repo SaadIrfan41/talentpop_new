@@ -12,6 +12,7 @@
     "@formkit/auto-animate": "^1.0.0-beta.6",
     "@headlessui/react": "^1.7.13",
     "@hookform/resolvers": "^3.0.1",
+    "@mantine/hooks": "^6.0.7",
     "@types/node": "18.15.11",
     "@types/react": "18.0.33",
     "@types/react-dom": "18.0.11",

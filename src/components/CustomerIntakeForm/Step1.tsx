@@ -88,7 +88,7 @@ const Step1 = () => {
         <button
           type='submit'
           disabled={isSubmitting}
-          className=' hidden rounded-xl bg-[#8FD758] px-8 py-2 text-2xl font-bold text-white sm:block sm:text-2xl   lg:hidden xl:block'
+          className=' hidden  w-[6.563rem]  rounded-[10px] bg-[#8FD758] text-2xl font-bold text-white sm:block sm:text-2xl   lg:hidden xl:block'
         >
           Next
         </button>

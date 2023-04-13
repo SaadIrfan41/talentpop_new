@@ -13,7 +13,7 @@ import useClickOutside from '@/utils/useClickOutside'
 import Flatpickr from 'react-flatpickr'
 import useStepper from '@/stores/CustomerIntakeForm/useStepperStore'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
-
+import { useMediaQuery } from '@mantine/hooks'
 const genders = ['Any', 'Male', 'Female']
 
 const Step2 = () => {
@@ -23,6 +23,7 @@ const Step2 = () => {
   const [showGender, setShowGender] = useState(false)
   const [selectedGender, setSelectedGender] = useState('')
   const [date, setDate] = useState<Date>()
+  const DatePlaceholder = useMediaQuery('(min-width: 640px')
 
   const clickOutsideRef = useRef<HTMLDivElement>(null)
   useClickOutside(clickOutsideRef, () => {
@@ -100,7 +101,7 @@ const Step2 = () => {
             <button
               type='submit'
               disabled={isSubmitting}
-              className=' hidden rounded-xl bg-[#8FD758] pb-[5px] pl-7 pr-8 pt-[1px] text-2xl font-bold text-white sm:block sm:text-2xl   lg:hidden xl:block'
+              className=' hidden  w-[105px] rounded-xl bg-[#8FD758] text-2xl font-bold text-white sm:block sm:text-2xl   lg:hidden xl:block'
             >
               Next
             </button>
@@ -333,12 +334,13 @@ const Step2 = () => {
                 // defaultValue={qaSheet}
                 {...register('qaSheet')}
                 placeholder='Great, Can You Tell Us A Little Bit About Your Business?'
-                className='block w-full text-sm text-slate-500 file:mr-4
-      file:rounded-full file:border-0 file:bg-green-50
+                className='block w-full   text-sm
+      text-slate-500 file:mr-4 file:rounded-xl
+      file:border-0 file:bg-[#8FD758]
       file:px-4 file:py-2
       file:text-sm file:font-semibold
-      file:text-green-700 hover:file:cursor-pointer
-      hover:file:bg-green-100'
+      file:text-white
+      hover:file:cursor-pointer '
               />
               {errors.qaSheet && (
                 //@ts-ignore
@@ -476,7 +478,11 @@ const Step2 = () => {
           onChange={([date]) => {
             setDate(date), setValue('agentsStartingDate', date.toISOString())
           }}
-          placeholder='When Would You Like Your Agent(s) Up And Running?'
+          placeholder={
+            DatePlaceholder
+              ? 'When Would You Like Your Agent(s) Up And Running?'
+              : 'Agent Staring Date'
+          }
           className='relative flex w-full max-w-lg  items-center justify-around gap-x-2 rounded-lg border border-black/20  px-2 py-4 text-start  text-lg font-normal text-[#666666] outline-none ring-black/20 ring-offset-2 active:ring-4'
         />
         <div className='pointer-events-none absolute right-5 top-3 '>

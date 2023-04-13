@@ -30,5 +30,71 @@ body {
             display: none;
         } */
 }
+.flatpickr-month{
+  border-top-right-radius: 10px !important;
+  border-top-left-radius: 10px !important;
+}
+.flatpickr-days{
+  border-bottom-right-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+}
+.flatpickr-innerContainer{
+  border-bottom-right-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+}
+.flatpickr-calendar{
+      /* top: 452px !important;
+        right: auto !important; */
+        /* left: 300px !important; */
+       
+  border-bottom-right-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+}
+@media  (min-width: 480px) {
+.flatpickr-calendar {
+    /* top: 452px !important;
+        right: auto !important; */
+    left: 150px !important;
+
+   
+  }
+}
+@media (min-width: 640px) {
+  .flatpickr-calendar {
+      /* top: 452px !important;
+          right: auto !important; */
+      left: 300px !important;
+  
+  
+    }
+}
+.flatpickr-month, .flatpickr-monthDropdown-month,.flatpickr-monthDropdown-months,.flatpickr-weekdays,.flatpickr-weekday
+{
+  background-color: #8FD758 !important;
+}
+.day,.selected {
+  
+  border-color: #76ad4e !important;
+  background-color: #8FD758 !important;;
+}
+.flatpickr-day:hover{
+  color: white !important;
+  background-color: #8FD758 !important;
+    
+}
+.today{
+  border-color: #76ad4e !important;
+}
+/* .arrowBottom:before{
+  display: none !important;
+} */
+.arrowBottom:before,
+.arrowBottom:after {
+  display: none !important;
+}
+
+/* .flatpickr-calendar.arrowBottom:before {
+  border-top-color: rgba(72, 72, 72, 0.2);
+} */
 
 

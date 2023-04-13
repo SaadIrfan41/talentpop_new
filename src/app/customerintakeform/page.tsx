@@ -66,10 +66,10 @@ const CustomerIntakeFormPage = () => {
           <Stepper />
         </div>
         {stepNumb && (
-          <div className=' relative ml-auto hidden w-full  lg:col-span-6 lg:block'>
-            <div className='fixed 2xl:right-0 '>
+          <div className=' relative ml-auto hidden h-full w-full  lg:col-span-6 lg:block'>
+            <div className='sticky bottom-0 top-0 '>
               <img
-                className='  mx-auto  h-full min-h-screen  w-full bg-gray-50  '
+                className='  ml-auto h-full min-h-screen '
                 src={`/step${stepNumb}.png`}
                 alt='Loading Image'
               />
