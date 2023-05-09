@@ -74,7 +74,7 @@ const CustomerIntakeFormPage = () => {
                 priority
                 fill={true}
                 className='  ml-auto h-full min-h-screen max-w-fit '
-                src={`/step${stepNumb}.png`}
+                src={`https://talentpop.s3.amazonaws.com/step${stepNumb}.png`}
                 alt='Loading Image'
               />
             </div>
