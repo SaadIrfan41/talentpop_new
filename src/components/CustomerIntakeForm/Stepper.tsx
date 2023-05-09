@@ -21,9 +21,22 @@ const Stepper = () => {
       ) : stepNumb === 3 ? (
         <Step3 />
       ) : (
-        'Loading Form'
+        <div className=' grid h-[90dvh] w-[90vw] place-content-center '>
+          <div className='spinner'>
+            <div className='bounce1'></div>
+            <div className='bounce2'></div>
+            <div className='bounce3'></div>
+          </div>
+        </div>
       )}
       {/* <Step3 /> */}
+      {/* <div className=' grid h-[90dvh] w-[90vw] place-content-center'>
+        <div className='spinner'>
+          <div className='bounce1'></div>
+          <div className='bounce2'></div>
+          <div className='bounce3'></div>
+        </div>
+      </div> */}
     </div>
   )
 }

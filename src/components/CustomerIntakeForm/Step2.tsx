@@ -23,7 +23,7 @@ const Step2 = () => {
   const [showGender, setShowGender] = useState(false)
   const [selectedGender, setSelectedGender] = useState('')
   const [date, setDate] = useState<Date>()
-  const DatePlaceholder = useMediaQuery('(min-width: 640px')
+  const DatePlaceholder = useMediaQuery('(min-width: 640px)')
 
   const clickOutsideRef = useRef<HTMLDivElement>(null)
   useClickOutside(clickOutsideRef, () => {
@@ -125,7 +125,7 @@ const Step2 = () => {
                 setShowPlateformArray(true)
               }}
             />
-            <div className='text-white peer-checked:text-[#D0F289]'>
+            <div className='peer-checked:text-[#D0F289] text-white'>
               <CheckIcon />
             </div>
             <span>Yes</span>
@@ -146,7 +146,7 @@ const Step2 = () => {
                   resetField('customPlatformName')
               }}
             />
-            <div className='text-white peer-checked:text-[#D0F289]'>
+            <div className='peer-checked:text-[#D0F289] text-white'>
               <CheckIcon />
             </div>
             <span>No</span>
@@ -177,7 +177,7 @@ const Step2 = () => {
                       {...register('platformName')}
                       value={name}
                     />
-                    <div className='text-white peer-checked:text-[#D0F289]'>
+                    <div className='peer-checked:text-[#D0F289] text-white'>
                       <CheckIcon />
                     </div>
                     <span>{name}</span>
@@ -195,7 +195,7 @@ const Step2 = () => {
                   type='checkbox'
                   className='peer sr-only'
                 />
-                <div className='text-white peer-checked:text-[#D0F289]'>
+                <div className='peer-checked:text-[#D0F289] text-white'>
                   <CheckIcon />
                 </div>
                 <span>Other</span>
@@ -211,7 +211,7 @@ const Step2 = () => {
                   type='text'
                   {...register('customPlatformName')}
                   placeholder='Platform Name'
-                  className='max-h-8 w-full max-w-[14.375rem] rounded-lg border  border-black/20 py-4 pl-3 outline-none placeholder:text-lg placeholder:font-normal placeholder:text-[#666666]'
+                  className='placeholder:text-[#666666] max-h-8 w-full max-w-[14.375rem] rounded-lg  border border-black/20 py-4 pl-3 outline-none placeholder:text-lg placeholder:font-normal'
                 />
                 {errors.customPlatformName && (
                   <span className=' text-red-400'>
@@ -250,7 +250,7 @@ const Step2 = () => {
                   {...register('ecommercePlatform')}
                   value={name}
                 />
-                <div className='text-white peer-checked:text-[#D0F289]'>
+                <div className='peer-checked:text-[#D0F289] text-white'>
                   <CheckIcon />
                 </div>
                 <span>{name}</span>
@@ -287,7 +287,7 @@ const Step2 = () => {
                 setShowQA_Sheet(true)
               }}
             />
-            <div className='text-white peer-checked:text-[#D0F289]'>
+            <div className='peer-checked:text-[#D0F289] text-white'>
               <CheckIcon />
             </div>
             <span>Yes</span>
@@ -306,7 +306,7 @@ const Step2 = () => {
                 setShowQA_Sheet(false), resetField('qaSheet')
               }}
             />
-            <div className='text-white peer-checked:text-[#D0F289]'>
+            <div className='peer-checked:text-[#D0F289] text-white'>
               <CheckIcon />
             </div>
             <span>No</span>
@@ -334,9 +334,9 @@ const Step2 = () => {
                 // defaultValue={qaSheet}
                 {...register('qaSheet')}
                 placeholder='Great, Can You Tell Us A Little Bit About Your Business?'
-                className='block w-full   text-sm
-      text-slate-500 file:mr-4 file:rounded-xl
-      file:border-0 file:bg-[#8FD758]
+                className='file:bg-[#8FD758] block   w-full
+      text-sm text-slate-500 file:mr-4
+      file:rounded-xl file:border-0
       file:px-4 file:py-2
       file:text-sm file:font-semibold
       file:text-white
@@ -372,7 +372,7 @@ const Step2 = () => {
               placeholder='Agents'
               type='number'
               {...register('numOfAgents', { valueAsNumber: true })}
-              className=' max-w-[8.563rem] rounded-lg border-2 border-[#666666]/20 px-5 pb-3 pt-3 outline-none placeholder:text-lg placeholder:font-normal placeholder:text-[#666666]'
+              className=' placeholder:text-[#666666] max-w-[8.563rem] rounded-lg border-2 border-[#666666]/20 px-5 pb-3 pt-3 outline-none placeholder:text-lg placeholder:font-normal'
             />
           </label>
         </div>
@@ -398,7 +398,7 @@ const Step2 = () => {
               placeholder='Days'
               type='number'
               {...register('agentWorkingDays', { valueAsNumber: true })}
-              className=' max-w-[8.563rem] rounded-lg border-2 border-[#666666]/20 px-5 pb-3 pt-3 outline-none placeholder:text-lg placeholder:font-normal placeholder:text-[#666666]'
+              className=' placeholder:text-[#666666] max-w-[8.563rem] rounded-lg border-2 border-[#666666]/20 px-5 pb-3 pt-3 outline-none placeholder:text-lg placeholder:font-normal'
             />
             <input
               // defaultChecked={tasks[index] === task}
@@ -407,7 +407,7 @@ const Step2 = () => {
               placeholder='Hours'
               type='number'
               {...register('agentWorkingHours', { valueAsNumber: true })}
-              className=' max-w-[8.563rem] rounded-lg border-2 border-[#666666]/20 px-5 pb-3 pt-3 outline-none placeholder:text-lg placeholder:font-normal placeholder:text-[#666666]'
+              className=' placeholder:text-[#666666] max-w-[8.563rem] rounded-lg border-2 border-[#666666]/20 px-5 pb-3 pt-3 outline-none placeholder:text-lg placeholder:font-normal'
             />
           </div>
         </div>
@@ -446,7 +446,7 @@ const Step2 = () => {
             {genders.map((gender, index) => (
               <div
                 key={index}
-                className=' px-4 py-2 hover:cursor-pointer hover:border-l-4  hover:border-[#8FD758]  hover:bg-green-50 hover:text-green-700 '
+                className=' hover:border-[#8FD758] px-4 py-2 hover:cursor-pointer  hover:border-l-4  hover:bg-green-50 hover:text-green-700 '
               >
                 <label className='flex cursor-pointer items-center gap-x-3'>
                   <input
@@ -476,7 +476,12 @@ const Step2 = () => {
             minDate: 'today',
           }}
           onChange={([date]) => {
-            setDate(date), setValue('agentsStartingDate', date.toISOString())
+            setDate(date),
+              setValue('agentsStartingDate', date.toISOString(), {
+                shouldDirty: true,
+                shouldValidate: true,
+                shouldTouch: true,
+              })
           }}
           placeholder={
             DatePlaceholder
