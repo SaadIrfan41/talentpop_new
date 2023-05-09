@@ -71,6 +71,15 @@ const CustomerIntakeFormPage = () => {
           <div className=' relative ml-auto hidden h-full w-full  lg:col-span-5 lg:block'>
             <div className='sticky bottom-0 top-0 '>
               <OgImage />
+              {/* <Image
+                fetchPriority='high'
+                priority
+                rel='preload'
+                fill={true}
+                className='  ml-auto h-full min-h-screen max-w-fit '
+                src={`/step${stepNumb}.png`}
+                alt='Loading Image'
+              /> */}
               {/* <Suspense
                 fallback={
                   <div className=' grid h-[90dvh] w-[90vw] place-content-center '>

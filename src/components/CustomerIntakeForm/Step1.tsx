@@ -99,7 +99,7 @@ const Step1 = () => {
           type='text'
           {...register('websiteURL')}
           placeholder='Your Website'
-          className={`  w-full max-w-md rounded-lg border  border-black/20 py-4 pl-3 outline-none placeholder:text-lg placeholder:font-normal placeholder:text-[#666666]   ${
+          className={`  placeholder:text-[#666666] w-full max-w-md rounded-lg  border border-black/20 py-4 pl-3 outline-none placeholder:text-lg placeholder:font-normal   ${
             errors.websiteURL ? 'border-2 border-red-500' : ''
           }`}
         />
@@ -114,7 +114,7 @@ const Step1 = () => {
             type='text'
             {...register('firstName')}
             placeholder='First Name'
-            className={`  w-full  rounded-lg border  border-black/20 px-3 py-4 outline-none placeholder:text-lg placeholder:font-normal placeholder:text-[#666666]   ${
+            className={`  placeholder:text-[#666666]  w-full rounded-lg  border border-black/20 px-3 py-4 outline-none placeholder:text-lg placeholder:font-normal   ${
               errors.firstName ? 'border-2 border-red-500' : ''
             }`}
           />
@@ -128,7 +128,7 @@ const Step1 = () => {
             type='text'
             {...register('lastName')}
             placeholder='Last Name'
-            className={`  w-full rounded-lg border  border-black/20 px-3 py-4 outline-none placeholder:text-lg placeholder:font-normal placeholder:text-[#666666]   ${
+            className={`  placeholder:text-[#666666] w-full rounded-lg  border border-black/20 px-3 py-4 outline-none placeholder:text-lg placeholder:font-normal   ${
               errors.lastName ? 'border-2 border-red-500' : ''
             }`}
           />
@@ -143,7 +143,7 @@ const Step1 = () => {
           type='email'
           {...register('email')}
           placeholder='Email'
-          className={`  w-full max-w-md rounded-lg border  border-black/20 py-4 pl-3 outline-none placeholder:text-lg placeholder:font-normal placeholder:text-[#666666]   ${
+          className={`  placeholder:text-[#666666] w-full max-w-md rounded-lg  border border-black/20 py-4 pl-3 outline-none placeholder:text-lg placeholder:font-normal   ${
             errors.email ? 'border-2 border-red-500' : ''
           }`}
         />
@@ -157,7 +157,7 @@ const Step1 = () => {
           type='text'
           {...register('businessName')}
           placeholder='Legal Name of Business'
-          className={`  w-full max-w-md rounded-lg border  border-black/20 py-4 pl-3 outline-none placeholder:text-lg placeholder:font-normal placeholder:text-[#666666]   ${
+          className={`  placeholder:text-[#666666] w-full max-w-md rounded-lg  border border-black/20 py-4 pl-3 outline-none placeholder:text-lg placeholder:font-normal   ${
             errors.businessName ? 'border-2 border-red-500' : ''
           }`}
         />
@@ -171,7 +171,7 @@ const Step1 = () => {
           type='text'
           {...register('businessAddress')}
           placeholder='Business Address'
-          className={`  w-full max-w-md rounded-lg border   border-black/20 py-4 pl-3 outline-none placeholder:text-lg placeholder:font-normal placeholder:text-[#666666]   ${
+          className={`  placeholder:text-[#666666] w-full max-w-md rounded-lg   border border-black/20 py-4 pl-3 outline-none placeholder:text-lg placeholder:font-normal   ${
             errors.businessAddress ? 'border-2 border-red-500' : ''
           }`}
         />
@@ -188,7 +188,7 @@ const Step1 = () => {
           rows={7}
           {...register('aboutBusiness')}
           placeholder='Short Description of your Business'
-          className={`  w-full max-w-md rounded-lg border  border-black/20 py-4 pl-3 outline-none placeholder:text-lg placeholder:font-normal placeholder:text-[#666666]  ${
+          className={`  placeholder:text-[#666666] w-full max-w-md rounded-lg  border border-black/20 py-4 pl-3 outline-none placeholder:text-lg placeholder:font-normal  ${
             errors.aboutBusiness ? 'border-2 border-red-500' : ''
           }`}
         />
@@ -219,7 +219,7 @@ const Step1 = () => {
                   {...register('tasks')}
                   value={task}
                 />
-                <div className='text-white peer-checked:text-[#D0F289]'>
+                <div className='peer-checked:text-[#D0F289] text-white'>
                   <CheckIcon />
                 </div>
                 <span>{task}</span>
@@ -236,7 +236,7 @@ const Step1 = () => {
               type='checkbox'
               className='peer sr-only'
             />
-            <div className='text-white peer-checked:text-[#D0F289]'>
+            <div className='peer-checked:text-[#D0F289] text-white'>
               <CheckIcon />
             </div>
             <span>Other</span>
@@ -249,7 +249,7 @@ const Step1 = () => {
               type='text'
               {...register('customTask')}
               placeholder='Task'
-              className='max-h-8 w-full max-w-[14.375rem] rounded-lg border  border-black/20 py-4 pl-3 outline-none placeholder:text-lg placeholder:font-normal placeholder:text-[#666666]'
+              className='placeholder:text-[#666666] h-8 w-full max-w-[14.375rem] rounded-lg  border border-black/20 px-3 py-3 outline-none placeholder:text-lg placeholder:font-normal'
             />
           </div>
         )}
@@ -280,7 +280,7 @@ const Step1 = () => {
               {...register('inboundPhoneSupport')}
               value='Yes'
             />
-            <div className='text-white peer-checked:text-[#D0F289]'>
+            <div className='peer-checked:text-[#D0F289] text-white'>
               <CheckIcon />
             </div>
             <span>Yes</span>
@@ -299,7 +299,7 @@ const Step1 = () => {
               {...register('inboundPhoneSupport')}
               value='No'
             />
-            <div className='text-white peer-checked:text-[#D0F289]'>
+            <div className='peer-checked:text-[#D0F289] text-white'>
               <CheckIcon />
             </div>
             <span>No</span>

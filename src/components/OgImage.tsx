@@ -13,9 +13,8 @@ const OgImage = () => {
     <Image
       fetchPriority='high'
       priority
-      rel='preload'
       fill={true}
-      className='  ml-auto h-full min-h-screen max-w-fit '
+      className='  ml-auto h-full min-h-screen  max-w-[650px]'
       src={`/step${stepNumb ? stepNumb : 1}.png`}
       alt='Loading Image'
     />
