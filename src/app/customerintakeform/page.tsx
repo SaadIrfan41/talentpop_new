@@ -3,9 +3,10 @@ import Stepper from '@/components/CustomerIntakeForm/Stepper'
 import useStepper from '@/stores/CustomerIntakeForm/useStepperStore'
 import { Bulp, HelpIcon, MessagesIcon } from '@/utils/Icons'
 import { useStoreHook } from '@/utils/useStoreHook'
-import React from 'react'
+import React, { Suspense } from 'react'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import Image from 'next/image'
+import OgImage from '@/components/OgImage'
 
 const CustomerIntakeFormPage = () => {
   const stepNumb = useStoreHook(useStepper, (state) => state.stepNumb)
@@ -69,14 +70,36 @@ const CustomerIntakeFormPage = () => {
         {stepNumb && (
           <div className=' relative ml-auto hidden h-full w-full  lg:col-span-5 lg:block'>
             <div className='sticky bottom-0 top-0 '>
-              <Image
+              <OgImage />
+              {/* <Suspense
+                fallback={
+                  <div className=' grid h-[90dvh] w-[90vw] place-content-center '>
+                    <div className='spinner'>
+                      <div className='bounce1'></div>
+                      <div className='bounce2'></div>
+                      <div className='bounce3'></div>
+                    </div>
+                  </div>
+                }
+              >
+                <Image
+                  fetchPriority='high'
+                  priority
+                  rel='preload'
+                  fill={true}
+                  className='  ml-auto h-full min-h-screen max-w-fit '
+                  src={`/step${stepNumb}.png`}
+                  alt='Loading Image'
+                />
+              </Suspense> */}
+              {/* <Image
                 fetchPriority='high'
                 priority
                 fill={true}
                 className='  ml-auto h-full min-h-screen max-w-fit '
                 src={`https://talentpop.s3.amazonaws.com/step${stepNumb}.png`}
                 alt='Loading Image'
-              />
+              /> */}
             </div>
           </div>
         )}
