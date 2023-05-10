@@ -211,7 +211,7 @@ const Step2 = () => {
                   type='text'
                   {...register('customPlatformName')}
                   placeholder='Platform Name'
-                  className='placeholder:text-[#666666] max-h-8 w-full max-w-[14.375rem] rounded-lg  border border-black/20 py-4 pl-3 outline-none placeholder:text-lg placeholder:font-normal'
+                  className='placeholder:text-[#666666] h-8 w-full max-w-[14.375rem] rounded-lg  border border-black/20 px-3 py-4 outline-none placeholder:text-lg placeholder:font-normal'
                 />
                 {errors.customPlatformName && (
                   <span className=' text-red-400'>
