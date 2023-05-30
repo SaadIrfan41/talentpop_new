@@ -39,6 +39,7 @@ export const config = {
     '/',
     '/customerintakeform/:path*',
     '/invoice/:path*',
+    '/recruitmentstatus/:path*',
     '/login/:path*',
     '/signup/:path*',
   ],

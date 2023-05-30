@@ -53,7 +53,6 @@ const LoginForm = () => {
 
         return toast.error(res.error)
 
-        return
         // return toast.error(res.error)
       }
       toast.success('Logged In Successfully')

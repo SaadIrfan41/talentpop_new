@@ -194,16 +194,16 @@ const Step3 = () => {
             <button
               type='submit'
               disabled={isSubmitting}
-              className=' hidden  h-[30px] w-[6.563rem] rounded-[10px] bg-[#8FD758] pb-1 text-xl font-bold text-white sm:block sm:text-xl   lg:hidden xl:block'
+              className=' hidden   rounded-[10px] bg-[#8FD758] pb-1 text-xl font-bold text-white disabled:cursor-not-allowed sm:block sm:text-xl   lg:hidden xl:block'
             >
               {isSubmitting ? (
-                <div role='status' className='flex items-center gap-x-2'>
-                  <span className='animate-pulse w-full text-center'>
-                    Submitting ...
-                  </span>
+                <div className='animate-pulse my-1 mr-3 h-full w-full text-center'>
+                  Submitting...
                 </div>
               ) : (
-                ' Submit'
+                <div className='my-1 h-full w-full px-3 text-center'>
+                  Submit
+                </div>
               )}
             </button>
           </div>
