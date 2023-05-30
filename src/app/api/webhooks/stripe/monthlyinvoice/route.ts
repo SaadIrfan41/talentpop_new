@@ -1,15 +1,14 @@
-import { buffer } from 'micro'
-import { Buffer } from 'node:buffer'
 import Stripe from 'stripe'
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '../../../../../../prisma/prisma'
 const endpointSecret = process.env.STRIPE_ENDPOINT_SECRETE as string
 import { headers } from 'next/headers'
-export const config = {
-  api: {
-    bodyParser: false, // don't parse body of incoming requests because we need it raw to verify signature
-  },
-}
+// export const config = {
+//   api: {
+//     bodyParser: false, // don't parse body of incoming requests because we need it raw to verify signature
+//   },
+// }
+export const dynamic = 'auto'
 
 export async function POST(req: NextRequest, res: NextResponse) {
   const headersList = headers()
@@ -53,6 +52,30 @@ export async function POST(req: NextRequest, res: NextResponse) {
         //@ts-ignore
         const customerData = await stripe.customers.retrieve(data.customer)
         console.log(customerData.id)
+        const currentDate = new Date()
+        const payment_recurring_date = new Date(
+          currentDate.getTime() + 14 * 24 * 60 * 60 * 1000
+        )
+        const customer = await prisma.customer.findUnique({
+          where: { stripeCustomerId: customerData.id },
+          include: {
+            invoice: {
+              include: { MonthlyInvoice: true },
+            },
+          },
+        })
+        //  await prisma.firstTimeInvoice.update({
+        //    where: { id: customer?.invoice?.FirstTimeInvoice?.id },
+        //    data: {
+        //      is_payed: true,
+        //    },
+        //  })
+        await prisma.monthlyInvoice.update({
+          where: { id: customer?.invoice?.MonthlyInvoice?.id },
+          data: {
+            payment_recurring_date,
+          },
+        })
 
         // const subscription = event.data.object as Stripe.Subscription
 

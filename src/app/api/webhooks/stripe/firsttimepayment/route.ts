@@ -4,11 +4,12 @@ import { NextRequest, NextResponse } from 'next/server'
 const endpointSecret = process.env.STRIPE_ENDPOINT_SECRETE as string
 import { headers } from 'next/headers'
 import { prisma } from '../../../../../../prisma/prisma'
-export const config = {
-  api: {
-    bodyParser: false, // don't parse body of incoming requests because we need it raw to verify signature
-  },
-}
+// export const config = {
+//   api: {
+//     bodyParser: false, // don't parse body of incoming requests because we need it raw to verify signature
+//   },
+// }
+export const dynamic = 'auto'
 
 export async function POST(req: NextRequest, res: NextResponse) {
   const headersList = headers()
