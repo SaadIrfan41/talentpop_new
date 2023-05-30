@@ -46,7 +46,7 @@ const SignUpForm = () => {
       reset()
       // console.log('BASE URL', process.env.NEXT_PUBLIC_BASE_URL)
       if (process.env.NEXT_PUBLIC_BASE_URL) {
-        router.push(`${process.env.NEXT_PUBLIC_BASE_URL}/ customerintakeform`)
+        router.push(`${process.env.NEXT_PUBLIC_BASE_URL}/customerintakeform`)
       }
     } catch (error) {
       toast.error((error as { message: string }).message)
