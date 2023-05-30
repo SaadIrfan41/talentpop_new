@@ -17,6 +17,9 @@ import {
   UserCircleIcon,
 } from '@/utils/Icons'
 import React from 'react'
+import { InvoiceTypes } from '../invoice/page'
+import { getInvoice } from '@/components/InvoiceData'
+import { redirect } from 'next/navigation'
 
 const recruitmentProcess = [
   {
@@ -79,7 +82,21 @@ const recruitmentProcess = [
     completed: false,
   },
 ]
-const RecruitmentStatusPage = () => {
+const RecruitmentStatusPage = async () => {
+  const today = Date.now()
+  const data: InvoiceTypes = await getInvoice()
+  if (data.FirstTimeInvoice.is_payed) {
+    if (data.MonthlyInvoice.payment_recurring_date) {
+      if (
+        new Date(data.MonthlyInvoice.payment_recurring_date) < new Date(today)
+      ) {
+        redirect('/invoice')
+      }
+    }
+  } else {
+    redirect('/invoice')
+  }
+
   return (
     <div className=' flex h-full'>
       <div className='relative w-[94px]'>

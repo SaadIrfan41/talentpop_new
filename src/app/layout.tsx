@@ -1,6 +1,8 @@
 import { textFont } from '@/utils/fonts'
 import './globals.css'
 import 'flatpickr/dist/themes/material_green.css'
+import ToasterComponent from '@/lib/Toaster'
+import NextAuthProvider from '@/components/providers/NextAuthProvider'
 
 export const metadata = {
   title: 'Create Next App',
@@ -14,7 +16,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en' className={`${textFont.className} h-full `}>
-      <body>{children}</body>
+      <body>
+        <NextAuthProvider>
+          {children}
+          <ToasterComponent />
+        </NextAuthProvider>
+      </body>
     </html>
   )
 }

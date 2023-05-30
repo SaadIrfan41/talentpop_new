@@ -31,16 +31,30 @@ type StepperState = {
   setqaSheetAvaliable: (qaSheetAvaliable: string) => void
   qaSheet: File | null
   setQaSheet: (qaSheet: File | null) => void
-  numAgents: number
-  setNumAgents: (numAgents: number) => void
+  numOfAgents: number
+  setNumAgents: (numOfAgents: number) => void
   agentWorkingHours: number
   setAgentWorkingHours: (agentWorkingHours: number) => void
   agentWorkingDays: number
   setAgentWorkingDays: (agentWorkingDays: number) => void
   genderPreference: string
   setGenderPreference: (genderPreference: string) => void
+  escalation_contact_firstName: string
+  setEscalation_contact_firstName: (
+    escalation_contact_firstName: string
+  ) => void
+  escalation_contact_lastName: string
+  setEscalation_contact_lastName: (escalation_contact_lastName: string) => void
+  return_exchange_policy: string
+  setReturn_exchange_policy: (return_exchange_policy: string) => void
+  escalation_contact_email: string
+  setEscalation_contact_email: (escalation_contact_email: string) => void
+  ticket_tags: string
+  setTicket_tags: (ticket_tags: string) => void
   agentsStartingDate: Date
   setAgentStartUpDate: (agentsStartingDate: Date) => void
+  most_common_questions: JSON
+  setMost_common_questions: (most_common_questions: JSON) => void
 }
 
 const useStepper = create<StepperState, any[]>(
@@ -78,8 +92,8 @@ const useStepper = create<StepperState, any[]>(
     setqaSheetAvaliable: (qaSheetAvaliable) => set({ qaSheetAvaliable }),
     qaSheet: null,
     setQaSheet: (qaSheet) => set({ qaSheet }),
-    numAgents: 0,
-    setNumAgents: (numAgents) => set({ numAgents }),
+    numOfAgents: 0,
+    setNumAgents: (numOfAgents) => set({ numOfAgents }),
     agentWorkingHours: 0,
     setAgentWorkingHours: (agentWorkingHours) => set({ agentWorkingHours }),
     agentWorkingDays: 0,
@@ -88,6 +102,23 @@ const useStepper = create<StepperState, any[]>(
     setGenderPreference: (genderPreference) => set({ genderPreference }),
     agentsStartingDate: new Date(),
     setAgentStartUpDate: (agentsStartingDate) => set({ agentsStartingDate }),
+    most_common_questions: JSON,
+    setMost_common_questions: (most_common_questions) =>
+      set({ most_common_questions }),
+    escalation_contact_firstName: '',
+    setEscalation_contact_firstName: (escalation_contact_firstName) =>
+      set({ escalation_contact_firstName }),
+    escalation_contact_lastName: '',
+    setEscalation_contact_lastName: (escalation_contact_lastName) =>
+      set({ escalation_contact_lastName }),
+    escalation_contact_email: '',
+    setEscalation_contact_email: (escalation_contact_email) =>
+      set({ escalation_contact_email }),
+    ticket_tags: '',
+    setTicket_tags: (ticket_tags) => set({ ticket_tags }),
+    return_exchange_policy: '',
+    setReturn_exchange_policy: (return_exchange_policy) =>
+      set({ return_exchange_policy }),
   })
   //   {
   //     name: 'CIF-Stepper',

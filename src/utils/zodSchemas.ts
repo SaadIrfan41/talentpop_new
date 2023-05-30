@@ -1,10 +1,11 @@
 import { z } from 'zod'
 export const Create_Account_Schema = z.object({
-  companyName: z
+  company_name: z
     .string()
+    .trim()
     .min(2, 'Company Name must contain at least 2 character(s)')
     .max(30, 'Company Name must contain at most 30 character(s)'),
-  phoneNumber: z
+  phone_number: z
     .string()
     .trim()
     .min(10, 'PhoneNumber must contain at least 10 Digit(s)')
@@ -12,8 +13,29 @@ export const Create_Account_Schema = z.object({
     .regex(/^\d+$/, { message: 'Invalid Number' }),
   password: z
     .string()
-    .min(2, 'Password must contain at least 7 character(s)')
+    .trim()
+    .min(7, 'Password must contain at least 7 character(s)')
     .max(30, 'Password must contain at most 30 character(s)'),
+
+  // .refine(
+  //   (text) => {
+  //     if (text.replace(/\s/g, '').length < 7) {
+  //       text.replace(/\s/g, '')
+  //       return text.replace(/\s/g, '')
+  //     }
+  //     return true
+  //   },
+  //   { message: 'Password must contain at least 7 character(s)' }
+  // )
+  // .refine(
+  //   (text) => {
+  //     if (text.replace(/\s/g, '').length > 30) {
+  //       return false
+  //     }
+  //     return true
+  //   },
+  //   { message: 'Password must contain at most 30 character(s)' }
+  // ),
 })
 
 export type RegisterUserTypes = z.infer<typeof Create_Account_Schema>
@@ -129,20 +151,6 @@ export const CustomerIntakeformStep2Schema = z.object({
     required_error: 'This Field is required',
     invalid_type_error: 'INVALID TYPE',
   }),
-  // platformName: z
-  //   .string().trim()
-  //   .refine(
-  //     (value) => {
-  //       if (value) {
-  //         return value.length > 0
-  //       }
-  //       return false
-  //     },
-  //     {
-  //       message: 'Enter your Platform Name',
-  //     }
-  //   )
-  //   .optional(),
 })
 
 const allowedFormats = [

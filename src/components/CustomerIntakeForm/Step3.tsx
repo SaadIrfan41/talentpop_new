@@ -9,8 +9,14 @@ import {
 import { CheckIcon, CheckIconBlack } from '@/utils/Icons'
 import useStepper from '@/stores/CustomerIntakeForm/useStepperStore'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
+import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
+import axios from 'axios'
 
 const Step3 = () => {
+  const router = useRouter()
+  const { data: session, update } = useSession()
+  // console.log(session)
   const [showPolicy, setShowPolicy] = useState(false)
   const {
     register,
@@ -31,21 +37,142 @@ const Step3 = () => {
       ],
     },
   })
+  //@ts-ignore
   const question = useWatch({
     control,
     name: 'commonQuestions',
   })
 
-  const stepperData = useStepper((state) => state)
+  // const stepperData = useStepper((state) => state)
+  const {
+    websiteURL,
+    firstName,
+    lastName,
+    email,
+    businessName,
+    businessAddress,
+    aboutBusiness,
+    tasks,
+    inboundPhoneSupport,
+    platformNames,
+    ecommercePlatform,
+    qaSheet,
+    numOfAgents,
+    agentWorkingHours,
+    agentWorkingDays,
+    genderPreference,
+    agentsStartingDate,
+    most_common_questions,
+    escalation_contact_email,
+    escalation_contact_firstName,
+    escalation_contact_lastName,
+    return_exchange_policy,
+    ticket_tags,
+    qaSheetAvaliable,
+    setMost_common_questions,
+    setReturn_exchange_policy,
+    setEscalation_contact_firstName,
+    setEscalation_contact_lastName,
+    setEscalation_contact_email,
+    setTicket_tags,
+  } = useStepper((state) => state)
   const submitData = async (data: CustomerIntakeFormStep3Types) => {
     console.log(data)
-    alert(JSON.stringify(stepperData))
-    // Nextstep()
-    // try {
+    //@ts-ignore
+    const commonQuestionsJson: JSON = JSON.stringify(data.commonQuestions)
+    setMost_common_questions(commonQuestionsJson),
+      setReturn_exchange_policy(data.returnPolicy || ''),
+      setEscalation_contact_firstName(data.escalationContact.firstName),
+      setEscalation_contact_lastName(data.escalationContact.lastName),
+      setEscalation_contact_email(data.escalationContact.email),
+      setTicket_tags(data.tags)
 
-    // } catch (error) {
-    //   console.log(error)
-    // }
+    const body = {
+      businessName: businessName,
+
+      firstName: firstName,
+
+      websiteURL: websiteURL,
+
+      lastName: lastName,
+
+      email: email,
+
+      businessAddress: businessAddress,
+
+      aboutBusiness: aboutBusiness,
+
+      tasks: tasks,
+
+      inboundPhoneSupport: inboundPhoneSupport,
+
+      customerServicePlatform: platformNames,
+
+      ecommercePlatform: ecommercePlatform,
+
+      qaSheet: qaSheet || '',
+
+      numOfAgents: numOfAgents,
+
+      agentWorkingHours: agentWorkingHours,
+
+      agentWorkingDays: agentWorkingDays,
+
+      genderPreference: genderPreference,
+
+      agentsStartingDate: agentsStartingDate,
+
+      returnPolicy: data.returnPolicy,
+
+      commonQuestions: data.commonQuestions || most_common_questions,
+
+      escalationContact: data.escalationContact,
+      tags: data.tags,
+    }
+    console.log(qaSheetAvaliable)
+    if (qaSheetAvaliable) {
+      //@ts-ignore
+      const file = qaSheet[0]
+      //@ts-ignore
+      const fileType = qaSheet[0]?.type
+
+      const { data } = await axios.get(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/s3Upload?fileType=${fileType}`
+      )
+
+      const { uploadUrl, key } = data
+      await axios.put(uploadUrl, file)
+      // console.log('ObjectURL', `https://talentpop.s3.amazonaws.com/${key}`)
+      body.qaSheet = `${process.env.NEXT_PUBLIC_AWS_S3_BASE_URL}/${key}`
+    }
+
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/customer-intake-form`,
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            body,
+          }),
+        }
+      )
+      if (!res.ok) {
+        // This will activate the closest `error.js` Error Boundary
+        throw new Error('Failed to fetch data')
+      }
+      // console.log(await res.json())
+      const response = await res.json()
+      await update({
+        ...session,
+        user: {
+          ...session?.user,
+          customerIntakeFormSubmited: response.formSubmited,
+        },
+      })
+      router.push('/invoice')
+    } catch (error) {
+      console.log('ERROR INS RESPONSE', error)
+    }
   }
   // console.log(errors)
   const [animateRef] = useAutoAnimate()
@@ -69,7 +196,15 @@ const Step3 = () => {
               disabled={isSubmitting}
               className=' hidden  h-[30px] w-[6.563rem] rounded-[10px] bg-[#8FD758] pb-1 text-xl font-bold text-white sm:block sm:text-xl   lg:hidden xl:block'
             >
-              Submit
+              {isSubmitting ? (
+                <div role='status' className='flex items-center gap-x-2'>
+                  <span className='animate-pulse w-full text-center'>
+                    Submitting ...
+                  </span>
+                </div>
+              ) : (
+                ' Submit'
+              )}
             </button>
           </div>
           {errors.returnPolicyAvaliable && (
@@ -283,8 +418,7 @@ const Step3 = () => {
       {/* List of Tags */}
       <div className='flex flex-col gap-y-5'>
         <p className={`w-full  text-lg font-normal text-[#666666] `}>
-          Who Is The Best Point Of Contact To Share Updates With/Escalate Tier 2
-          Support Tickets To?
+          Add a list of your tags currently being used in your Helpdesk platform
         </p>
 
         <div ref={animateRef} className='flex flex-col gap-y-1'>
@@ -308,7 +442,15 @@ const Step3 = () => {
         disabled={isSubmitting}
         className=' rounded-xl bg-[#8FD758] px-8 py-1 text-2xl font-bold text-white sm:hidden  sm:text-2xl lg:block   xl:hidden'
       >
-        Next
+        {isSubmitting ? (
+          <div role='status' className='flex items-center gap-x-2'>
+            <span className='animate-pulse w-full text-center'>
+              Submitting ...
+            </span>
+          </div>
+        ) : (
+          ' Submit'
+        )}
       </button>
     </form>
   )
