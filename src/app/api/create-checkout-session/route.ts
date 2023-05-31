@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
         },
       ],
       mode: 'payment',
-      success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/checkout/success`,
+      success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/recruitmentstatus`,
       cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/invoice`,
       customer: session?.stripeCustomerId as string,
       //    automatic_tax: { enabled: true },
