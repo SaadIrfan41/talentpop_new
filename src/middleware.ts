@@ -32,6 +32,14 @@ export async function middleware(request: NextRequest, response: NextResponse) {
       `${process.env.NEXTAUTH_URL}/customerintakeform`
     )
   }
+  if (pathname.includes('/recruitmentstatus')) {
+    if (session.customerIntakeFormSubmited) {
+      return NextResponse.next()
+    }
+    return NextResponse.redirect(
+      `${process.env.NEXTAUTH_URL}/customerintakeform`
+    )
+  }
 }
 
 export const config = {

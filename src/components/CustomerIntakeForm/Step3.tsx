@@ -130,7 +130,7 @@ const Step3 = () => {
       tags: data.tags,
     }
     console.log(qaSheetAvaliable)
-    if (qaSheetAvaliable) {
+    if (qaSheetAvaliable === 'true') {
       //@ts-ignore
       const file = qaSheet[0]
       //@ts-ignore
