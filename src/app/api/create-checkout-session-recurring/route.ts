@@ -41,16 +41,16 @@ export async function POST(request: NextRequest) {
           },
           quantity: numbOfAgents,
         },
-        {
-          price_data: {
-            currency: 'usd',
-            product_data: {
-              name: 'Setup Fee (One Time)',
-            },
-            unit_amount: body.setup_fee * 100,
-          },
-          quantity: 1,
-        },
+        // {
+        //   price_data: {
+        //     currency: 'usd',
+        //     product_data: {
+        //       name: 'Setup Fee (One Time)',
+        //     },
+        //     unit_amount: body.setup_fee * 100,
+        //   },
+        //   quantity: 1,
+        // },
       ],
       mode: 'payment',
       success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/recruitmentstatus`,

@@ -134,7 +134,7 @@ const RecruitmentStatusPage = async () => {
           </div>
         </nav>
       </div>
-      <div className=' mt-20 h-full w-full flex-grow'>
+      <div className=' mt-20 h-full w-full flex-grow px-[5%]'>
         <div className='  ml-10 mr-16  rounded-xl bg-[#FAFAFA] pb-20 pl-3 pr-14 pt-1 shadow-xl'>
           <div className='flex text-3xl font-bold'>
             <UserAddIcon />

@@ -57,7 +57,7 @@ const SignUpForm = () => {
     <form
       //   ref={formRef}
       onSubmit={handleSubmit(submitData)}
-      className={` flex max-w-md flex-col gap-y-8 `}
+      className={` flex max-w-md flex-col gap-y-8  `}
     >
       {/* Company Name */}
       <div ref={animateRef}>

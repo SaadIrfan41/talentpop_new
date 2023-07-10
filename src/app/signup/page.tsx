@@ -19,7 +19,7 @@ const SignupPage = () => {
         </div>
       </div>
       <div className='grid w-full grid-cols-12     '>
-        <div className=' col-span-12 mt-10  pl-10  pr-5   lg:col-span-7  lg:pl-16'>
+        <div className=' col-span-12 mt-10 pl-10   pr-5  lg:col-span-7 lg:pl-20'>
           <h1
             className={`${titleFont.className} mb-7 text-3xl font-bold text-[#69C920]`}
           >

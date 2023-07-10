@@ -181,7 +181,7 @@ const Step3 = () => {
     <form
       //   ref={formRef}
       onSubmit={handleSubmit(submitData)}
-      className={` flex flex-col gap-y-5 pb-16 `}
+      className={` flex flex-col gap-y-5 px-[8%] pb-16 `}
     >
       {/* REFUND POLICY AVAILABILITY */}
       <div ref={animateRef} className='flex flex-col gap-y-2  '>
